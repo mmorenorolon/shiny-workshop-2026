@@ -1,29 +1,29 @@
-# --------- load pkgs ------
+# LOAD LIBRARIES ----
 library(shiny)
-library(shinyWidgets)
 library(tidyverse)
-library(lterdatasampler)
 library(markdown)
-library(shinycssloaders)
+library(shinyWidgets)
+library(lterdatasampler)
+library(palmerpenguins)
 
-# add ggplot theme
+# GGPLOT THEME ----
 myCustomTheme <- function() {
+  
   theme_light() +
     theme(
-      axis.text = element_text(size = 12),
+      axis.text = element_text(color = "black", size = 12),
       axis.title = element_text(size = 14, face = "bold"),
       legend.title = element_text(size = 14, face = "bold"),
       legend.text = element_text(size = 13),
       legend.position = "bottom",
-      panel.border = element_rect(linewidth = 0.7)
+      panel.border = element_rect(colour = "black", fill = NA, linewidth = 0.7)
     )
+  
 }
 
-# data wrangling ----
-
-#.......................wrangle trout data.......................
+# DATA WRANGLING ----
 clean_trout <- and_vertebrates |>
-  filter(species == "Cutthroat trout") |>
+  filter(species == c("Cutthroat trout")) |>
   select(sampledate, section, species, length_mm = length_1_mm, weight_g, channel_type = unittype) |> 
   mutate(channel_type = case_when(
     channel_type == "C" ~ "cascade",
