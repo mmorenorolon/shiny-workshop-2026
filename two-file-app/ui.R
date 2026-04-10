@@ -63,8 +63,9 @@ ui <- navbarPage(
                  # trout mainPanel ----
                  mainPanel(
                    
-                   # Placeholder for plot output
-                   plotOutput(outputId = "channel_type_output")
+                   # Placeholder for trout scatterplot output
+                   plotOutput(outputId = "channel_type_output") |> 
+                     withSpinner(color = "blue",type = 8))
                    
                  ) # END trout mainPanel
                  
